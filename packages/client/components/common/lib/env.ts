@@ -1,7 +1,19 @@
+export const STOAT_API = "https://api.stoat.chat";
+
+//Run in NodeJS mode
+if (!("env" in import.meta))
+  (import.meta as { env: NodeJS.ProcessEnv }).env = process.env;
+
+/** App `/.stoat-config` endpoint response */
+export interface AppConfig {
+  api: string;
+  gifbox: string;
+}
+
 const DEFAULT_API_URL =
   (import.meta.env.DEV ? import.meta.env.VITE_DEV_API_URL : undefined) ??
   (import.meta.env.VITE_API_URL as string) ??
-  "https://stoat.chat/api";
+  STOAT_API;
 
 export default {
   /**
@@ -22,6 +34,7 @@ export default {
     "https://revolt.chat/api",
     // ... and now:
     "https://stoat.chat/api",
+    STOAT_API,
   ].includes(DEFAULT_API_URL),
   /**
    * What WS server to connect to by default.

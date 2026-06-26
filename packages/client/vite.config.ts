@@ -9,6 +9,7 @@ import { VitePWA } from "vite-plugin-pwa";
 import solidPlugin from "vite-plugin-solid";
 import solidSvg from "vite-plugin-solid-svg";
 
+import appConfigPlugin from "./app-config.plugin";
 import codegenPlugin from "./codegen.plugin";
 
 const base = process.env.BASE_PATH ?? "/";
@@ -19,6 +20,7 @@ export default defineConfig({
     Inspect(),
     devtools(),
     codegenPlugin(),
+    appConfigPlugin(),
     babelMacrosPlugin(),
     linguiSolidPlugin(),
     solidPlugin(),
