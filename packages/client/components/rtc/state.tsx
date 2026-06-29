@@ -350,7 +350,7 @@ class Voice {
     };
 
     if (this.getClient().configured()) {
-      const limit = this.getClient().getLimits()?.video_resolution;
+      const limit = this.getClient().limits?.video_resolution;
 
       // TODO: Add more resolutions to stream from if they're enabled. May tie into premium users in the future?
       if (limit) {
@@ -368,7 +368,7 @@ class Voice {
           originalResolution.frameRate = 5;
           originalResolution.aspectRatio = 0;
           if (this.getClient().configured()) {
-            const limit = this.getClient().getLimits()?.video_resolution;
+            const limit = this.getClient().limits?.video_resolution;
             if (limit) {
               originalResolution.width = limit[0];
               originalResolution.height = limit[1];

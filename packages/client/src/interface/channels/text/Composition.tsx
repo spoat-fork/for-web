@@ -143,7 +143,7 @@ export function MessageComposition(props: Props) {
   const maxMessageLength = () => {
     const cl = client();
     if (!cl.configured()) return 2000;
-    return cl.getLimits()?.message_length ?? 2000;
+    return cl.limits?.message_length ?? 2000;
   };
 
   const isAlmostTooLong = () => messageLength() > maxMessageLength() - 200;
@@ -294,7 +294,7 @@ export function MessageComposition(props: Props) {
     const validFiles: File[] = [];
 
     const maxSize = client().configured()
-      ? (client().getLimits()?.file_upload_size_limits.attachments ??
+      ? (client().limits?.file_upload_size_limits.attachments ??
         CONFIGURATION.MAX_FILE_SIZE)
       : CONFIGURATION.MAX_FILE_SIZE;
 
