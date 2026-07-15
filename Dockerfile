@@ -37,7 +37,6 @@ RUN pnpm --filter client exec lingui compile --typescript
 # these are replaced by inject.js at container run startup
 ENV VITE_HOST=__VITE_HOST__
 ENV VITE_API_URL=__VITE_API_URL__
-ENV VITE_HCAPTCHA_SITEKEY=__VITE_HCAPTCHA_SITEKEY__
 ENV VITE_RNNOISE_WORKLET_CDN_URL=__VITE_RNNOISE_WORKLET_CDN_URL__
 
 ARG BASE_PATH=/
@@ -63,7 +62,6 @@ EXPOSE 5000
 
 # Runtime env vars (overridden by Helm chart / docker run)
 ENV VITE_API_URL=""
-ENV VITE_HCAPTCHA_SITEKEY=""
 ENV VITE_RNNOISE_WORKLET_CDN_URL=""
 
 CMD ["npm", "start"]

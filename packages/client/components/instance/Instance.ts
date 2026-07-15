@@ -1,7 +1,6 @@
 import { Navigator, useLocation } from "@solidjs/router";
 import { Accessor, createMemo } from "solid-js";
 
-import { CONFIGURATION } from "@revolt/common";
 import { AppConfig, STOAT_HOST } from "@revolt/common/lib/env";
 import { Client, UserLimits } from "stoat.js";
 
@@ -42,7 +41,7 @@ export default class Instance {
     this.gifboxUrl = "https://api.gifbox.me"; //TODO Gifbox URL from backend
 
     //Features
-    this.captchaKey = CONFIGURATION.HCAPTCHA_SITEKEY; //TODO Detect from API
+    this.captchaKey = apiCfg.features.captcha.key;
     this.globalLimits = apiCfg.features.limits.global;
     this.baseLimits = apiCfg.features.limits.new_user;
     this.limits = createMemo(() => this.client.limits ?? this.baseLimits);

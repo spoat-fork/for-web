@@ -26,10 +26,6 @@ export default {
     (import.meta.env.VITE_API_URL as string) ??
     STOAT_API,
   /**
-   * hCaptcha site key to use if enabled
-   */
-  HCAPTCHA_SITEKEY: import.meta.env.VITE_HCAPTCHA_SITEKEY as string,
-  /**
    * Maximum number of replies a message can have
    */
   MAX_REPLIES: (import.meta.env.VITE_CFG_MAX_REPLIES as number) ?? 5,

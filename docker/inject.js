@@ -16,7 +16,6 @@ const OUT_DIR = "dist_injected";
 const REPLACEMENTS = {
   __VITE_HOST__: process.env.VITE_HOST || "",
   __VITE_API_URL__: process.env.VITE_API_URL || "",
-  __VITE_HCAPTCHA_SITEKEY__: process.env.VITE_HCAPTCHA_SITEKEY || "",
   __VITE_RNNOISE_WORKLET_CDN_URL__:
     process.env.VITE_RNNOISE_WORKLET_CDN_URL || "",
 };
