@@ -1,4 +1,4 @@
-import { Navigator, useLocation } from "@solidjs/router";
+import { Navigator } from "@solidjs/router";
 import { Accessor, createMemo } from "solid-js";
 
 import { AppConfig, STOAT_HOST } from "@revolt/common/lib/env";
@@ -64,10 +64,10 @@ export default class Instance {
     (pathOnly ? "" : StoatOrigin) + (base ? `/i/${base}` : this.#base) + path;
 
   /** Convert path to relative form, stripping instance prefix (if any)
-   * @param path Defaults to `location.pathname`
+   * @param path Defaults to `location.pathname` (non-reactive,
+   * try `useLocation().pathname` if you need reactivity)
    */
-  static relPath = (path?: string) =>
-    (path ?? useLocation().pathname).replace(R_RelPath, "");
+  static relPath = (path = location.pathname) => path.replace(R_RelPath, "");
 
   /** Switch to a new instance and redirect the client */
   switchTo = (host: string) =>
