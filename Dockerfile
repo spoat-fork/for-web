@@ -19,6 +19,7 @@ COPY packages/ packages/
 COPY packages/client/panda.config.ts packages/client/
 
 # Install dependencies
+ENV CI=true
 RUN pnpm install --frozen-lockfile --shamefully-hoist
 
 # Build sub-dependencies (stoat.js, livekit-components, lingui plugins, panda css etc)
