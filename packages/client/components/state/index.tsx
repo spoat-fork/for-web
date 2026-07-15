@@ -218,7 +218,7 @@ const stateContext = createContext<State>(null! as State);
 /**
  * Mount state context
  */
-export function StateContext(props: { children?: JSX.Element }) {
+export function StateContext(props: { children: JSX.Element }) {
   const stateLocal = new State();
   const [ready, setReady] = createSignal(false);
 

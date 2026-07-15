@@ -120,7 +120,7 @@ function MountContext(props: { children?: JSX.Element }) {
   const client = new QueryClient();
 
   return (
-    <>
+    <StateContext>
       <KeybindContext>
         <ModalContext>
           <ClientContext>
@@ -139,40 +139,38 @@ function MountContext(props: { children?: JSX.Element }) {
         </ModalContext>
       </KeybindContext>
       <LoadTheme />
-    </>
+    </StateContext>
   );
 }
 
 const routes = () => (
-  <Route component={StateContext}>
-    <Route component={MountContext}>
-      <Route path="/login" component={AuthPage as never}>
-        <Route path="/delete/:token" component={FlowDeleteAccount} />
-        <Route path="/check" component={FlowCheck} />
-        <Route path="/create" component={FlowCreate} />
-        <Route path="/create/:code" component={FlowCreate} />
-        <Route path="/auth" component={FlowLogin} />
-        <Route path="/resend" component={FlowResend} />
-        <Route path="/reset" component={FlowReset} />
-        <Route path="/verify/:token" component={FlowVerify} />
-        <Route path="/reset/:token" component={FlowConfirmReset} />
-        <Route path="/*" component={FlowHome} />
-      </Route>
-      <Route path="/" component={Interface as never}>
-        <Route path="/pwa" component={PWARedirect} />
-        <Route path="/dev" component={DevelopmentPage} />
-        <Route path="/discover/*" component={Discover} />
-        <Route path="/settings" component={SettingsRedirect} />
-        <Route path="/invite/:code" component={InviteRedirect} />
-        <Route path="/bot/:code" component={BotRedirect} />
-        <Route path="/friends" component={Friends} />
-        <Route path="/server/:server/*">
-          <Route path="/channel/:channel/*" component={ChannelPage} />
-          <Route path="/*" component={ServerHome} />
-        </Route>
+  <Route component={MountContext}>
+    <Route path="/login" component={AuthPage as never}>
+      <Route path="/delete/:token" component={FlowDeleteAccount} />
+      <Route path="/check" component={FlowCheck} />
+      <Route path="/create" component={FlowCreate} />
+      <Route path="/create/:code" component={FlowCreate} />
+      <Route path="/auth" component={FlowLogin} />
+      <Route path="/resend" component={FlowResend} />
+      <Route path="/reset" component={FlowReset} />
+      <Route path="/verify/:token" component={FlowVerify} />
+      <Route path="/reset/:token" component={FlowConfirmReset} />
+      <Route path="/*" component={FlowHome} />
+    </Route>
+    <Route path="/" component={Interface as never}>
+      <Route path="/pwa" component={PWARedirect} />
+      <Route path="/dev" component={DevelopmentPage} />
+      <Route path="/discover/*" component={Discover} />
+      <Route path="/settings" component={SettingsRedirect} />
+      <Route path="/invite/:code" component={InviteRedirect} />
+      <Route path="/bot/:code" component={BotRedirect} />
+      <Route path="/friends" component={Friends} />
+      <Route path="/server/:server/*">
         <Route path="/channel/:channel/*" component={ChannelPage} />
-        <Route path="/*" component={HomePage} />
+        <Route path="/*" component={ServerHome} />
       </Route>
+      <Route path="/channel/:channel/*" component={ChannelPage} />
+      <Route path="/*" component={HomePage} />
     </Route>
   </Route>
 );
